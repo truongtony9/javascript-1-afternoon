@@ -39,13 +39,13 @@ var groceries = ["apples", "milk", "eggs", "bread"];
 //doubleCheck should return the array.
 
 function doubleCheck(array){
-  var i = array.indexOf ("chocolate");
-  if (array[i]==="chocolate"){
+  if (array.includes("chocolate")){
     return array;
-    if else (array[i]!="chocolate"){
-      array.push ("chocolate");
-    };
-  };
+  } else {
+    array.push("chocolate")
+    return array;
+
+  }
 };
 
 //////////////////PROBLEM 5////////////////////
@@ -55,23 +55,28 @@ function doubleCheck(array){
 //name (a string), color: (a string), age (a number),
 //and goodBoy (a boolean).
 
-var dog = {name:"Puppy", color:"Blue", age:25, goodBoy=true};
+var dog = {
+  name:"Puppy",
+  color:"Blue", 
+  age:25, 
+  goodBoy:true
+}
 
 //...access the dog's name from the object and assign it to a
 //variable called devMountainClassPet.
-
-dog.name = "devMountainClassPet";
+ 
+var devMountainClassPet = dog.name;
 
 //Add a method to dog called bark.
 //The value of bark should be a function that returns the string "Woof woof".
 
-var dog = {
-  bark: function ("Woof"," woof"){return "Woof"+" woof"}
+dog.bark = function (){
+  return "Woof woof";
 };
 
 //Store the result of invoking the bark method in a variable called ruff.
 
-var ruff = bark("Woof"+" woof");
+var ruff = dog.bark();
 
 //////////////////PROBLEM 6////////////////////
 
@@ -87,13 +92,13 @@ var ruff = bark("Woof"+" woof");
 function looper(arr){
   var mySum = 0;
   for (i=0;i<arr.length;i++){
-    if (i%2==0 || i>=100){
-      arr[i];
-      mySum+i;
+    if (arr[i]%2==1 || arr[i]>=100){
+      mySum+=arr[i];
     }
-    return mySum;
   };
+  return mySum;
 };
+
 //////////////////PROBLEM 7////////////////////
 
 //Given the following function called math
@@ -112,8 +117,7 @@ function add (num1, num2){
 //Now invoke math, passing in the numbers 3 and 4, and your add function,
 //storing the result in the variable mathSum.
 
-add (3,4);
-var mathSum = add(num1, num2);
+var mathSum = math(3, 4, add);
 
 //////////////////PROBLEM 8////////////////////
 
@@ -128,8 +132,8 @@ function sampleCallbackTwo() {
   return "I am also a callback function";
 }
 
-function invoker(callback){
-  callback ();
+function invoker(para){
+  return para();
 };
 
 //////////////////PROBLEM 9////////////////////
@@ -154,7 +158,7 @@ function pond() {
 //as strings.
 
 //This array should contain the variable names (as strings) accessible in the global scope.
-let globalScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let globalScope = ["duck"];
 
 //This array should contain the variable names (as strings) accessible in the bathroom function.
 let bathroomScope = ["duck", "sailorDuck", "rubberDuck"];
@@ -171,9 +175,10 @@ let pondScope = ["duck", "realDuck"];
 //function which returns your name.
 
 function outerFn (){
-  alert ("Tony");
+  return function(){
+    return "Tony";
+  };
 };
-outerFn();
 
 //Now save the result of invoking outerFn into a variable called innerFn.
 
